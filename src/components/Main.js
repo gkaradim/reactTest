@@ -5,28 +5,43 @@ class Main extends Component {
 	constructor(props) {
 		super(props);
 		this.submit = this.submit.bind(this);
-		 this.handleInputChange = this.handleInputChange.bind(this);
-		
+		this.handleInputChange = this.handleInputChange.bind(this);
+
 		// this.state = {value: ''};
-		this.state = {email: '', onoma: ''};
+		this.state = {
+			email: "",
+			onoma: "",
+			pass: "",
+			Lonoma: "",
+			cpass: "",
+			num: "",
+			sel: ""
+		};
 	}
 	// handleChange(e) {
- //    this.setState({value: e.target.value});
- //  }
-   handleInputChange(e) {
-    
-    const target = e.target;
-    const value =  target.value;
-    const name = target.name;
+	//    this.setState({value: e.target.value});
+	//  }
+	handleInputChange(e) {
+		const target = e.target;
+		const value = target.value;
+		const name = target.name;
 
-    this.setState({
-      [name] : value
-    });
-  }
+		this.setState({
+			[name]: value
+		});
+	}
 	submit(e) {
 		e.preventDefault();
-		
-		console.log(this.setState.value);
+
+		console.log(
+			this.state.email,
+			this.state.onoma,
+			this.state.pass,
+			this.state.Lonoma,
+			this.state.cpass,
+			this.state.num,
+			this.state.sel
+		);
 	}
 	render() {
 		return (
@@ -40,7 +55,7 @@ class Main extends Component {
 						</p>
 					</div>
 				</div>
-				<form onSubmit={this.submit} className="forma" >
+				<form onSubmit={this.submit} className="forma">
 					<div className="row">
 						<div className="back col-6 offset-3">
 							<header className="row">
@@ -90,10 +105,13 @@ class Main extends Component {
 									<div className="form-group required">
 										<label className="control-label">Password </label>
 										<input
+											name="pass"
 											type="password"
 											placeholder="Type in password"
 											className="form-control"
 											id="pwd"
+											value={this.state.pass}
+											onChange={this.handleInputChange}
 										/>
 									</div>
 								</div>
@@ -103,10 +121,13 @@ class Main extends Component {
 											Last name{" "}
 										</label>
 										<input
+											name="Lonoma"
 											type="text"
 											placeholder="Type in your last name"
 											className="form-control"
 											id="name"
+											value={this.state.Lonoma}
+											onChange={this.handleInputChange}
 										/>
 									</div>
 								</div>
@@ -116,10 +137,13 @@ class Main extends Component {
 											Confirm password{" "}
 										</label>
 										<input
+											name="cpass"
 											type="password"
 											placeholder="Type in password"
 											className="form-control"
 											id="pass"
+											value={this.state.cpass}
+											onChange={this.handleInputChange}
 										/>
 									</div>
 								</div>
@@ -129,17 +153,26 @@ class Main extends Component {
 											Mobile number{" "}
 										</label>
 										<input
+											name="num"
 											type=""
 											placeholder="Type in your mobile number"
 											className="form-control"
 											id="num"
+											value={this.state.num}
+											onChange={this.handleInputChange}
 										/>
 									</div>
 								</div>
 								<div className="col-6 offset-6">
 									<div className="form-group required">
 										<label className="control-label">Role </label>
-										<select className="form-control" id="">
+										<select
+											className="form-control"
+											id=""
+											name="sel"
+											value={this.state.sel}
+											onChange={this.handleInputChange}
+										>
 											<option value="" disabled selected>
 												Select your role
 											</option>
@@ -163,7 +196,7 @@ class Main extends Component {
 										<div className="Uploadbtn col-8 offset-2 text-center">
 											<button
 												className="btn btn-primary"
-												type="submit"
+												type="button"
 											>
 												Upload image
 											</button>
@@ -188,7 +221,6 @@ class Main extends Component {
 												className="join btn btn-primary col-12"
 												type="submit"
 												value="Submit"
-												
 											>
 												Join Now
 											</button>
