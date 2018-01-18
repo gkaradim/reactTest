@@ -7,7 +7,6 @@ class Main extends Component {
 		this.submit = this.submit.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
 
-		// this.state = {value: ''};
 		this.state = {
 			email: "",
 			onoma: "",
